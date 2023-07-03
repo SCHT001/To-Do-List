@@ -1,0 +1,65 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Kanit', sans-serif;
+}
+.main{
+    background-image: url(image/bg.png);
+    background-position:center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    height: 100vh;
+}
+.submain
+{
+    height: auto;
+    width: 20em;
+    border: 0.2px solid black;
+    text-align: center;
+    color: white;
+    border-radius: 10px;
+    padding: 20px 20px 0px 20px ;
+    margin-top: 10%;
+    background: linear-gradient(45deg,rgb(185, 24, 131),purple);
+    
+}
+#input{
+   background-color: rgb(212, 172, 119);
+    color: black;
+    box-shadow: none;
+    border-radius: 5px;
+    border: 1px solid white;
+    height: 30px;
+    width: 80%;
+    font-size: large;
+}
+#btn
+{
+    font-size: 12px;
+    width: 40px;
+    height: 30px;
+    border-radius: 20%;
+    border: 1px solid white;
+    background-color: rgb(208, 91, 167);
+    font-size: large;
+    color: white;
+} 
+hr{
+    margin:10px;
+    
+}
+.container2
+{
+    color: white;
+}
+.instructions
+{
+    font-size: small;
+    color: white;
+}
+@media (max-width:600px){
+    
+}
