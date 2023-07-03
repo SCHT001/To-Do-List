@@ -1,7 +1,8 @@
 *{
     margin: 0px;
     padding: 0px;
-    font-family: 'Kanit', sans-serif;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: black;
 }
 .main{
     background-image: url(image/bg.png);
@@ -19,33 +20,42 @@
     width: 20em;
     border: 0.2px solid black;
     text-align: center;
-    color: white;
+    
     border-radius: 10px;
     padding: 20px 20px 0px 20px ;
     margin-top: 10%;
-    background: linear-gradient(45deg,rgb(185, 24, 131),purple);
+    background: linear-gradient(45deg,rgb(101, 141, 194),rgb(197, 117, 197));
     
 }
 #input{
-   background-color: rgb(212, 172, 119);
+   background-color:transparent;
     color: black;
     box-shadow: none;
     border-radius: 5px;
-    border: 1px solid white;
+    border: none;
     height: 30px;
     width: 80%;
     font-size: large;
+    margin-left: 10px;
+    
+}
+#input:focus{
+    outline: none;
+}
+.container{
+    display: flex;
 }
 #btn
 {
     font-size: 12px;
     width: 40px;
     height: 30px;
-    border-radius: 20%;
-    border: 1px solid white;
-    background-color: rgb(208, 91, 167);
-    font-size: large;
-    color: white;
+    border-radius: 40%;
+    border: none;
+    background-color:transparent;
+    font-size: 1.5em;
+    color: black;
+    cursor: pointer;
 } 
 hr{
     margin:10px;
@@ -53,13 +63,40 @@ hr{
 }
 .container2
 {
-    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 .instructions
 {
     font-size: small;
-    color: white;
+    text-align: left;
+    width: fit-content;
 }
-@media (max-width:600px){
+hr{
+    border: 0px;
+    height: 2px;
+    background-color: black;
+}
+#clearBtn{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+
+@media (max-width:600px) {
+    .submain{
+        
+        width: 100%;
+        height: 100%;
+        margin: 0px 0px 0px 0px;
+       
+        border: none;
+    }
+    .main{
+        padding: 20px;
+        
+    }
     
 }
