@@ -64,15 +64,16 @@ function addTask(){
 
 function deleteItem(e){
     const listItem=e.target.closest('.listItem');
-    const taskList = listItem.parentNode;
-    const index = Array.from(taskList.children).indexOf(listItem);
-    const storedTasks = JSON.parse(localStorage.getItem('tasks'));
-    if (Array.isArray(storedTasks)) {
-    storedTasks.splice(index, 1);
-    localStorage.setItem('tasks', JSON.stringify(storedTasks));
-  }
     listItem.remove();
-    
+
+    const title=listItem.querySelector('.titleSpan').innerText;
+    const des=listItem.querySelector('.desSpan').innerText;
+    var taskFromStorage=JSON.parse(localStorage.getItem('tasks'));
+    var index= taskFromStorage.findIndex((item)=>{
+        return item[0].title===title && item[0].description===des;    
+    })
+    taskFromStorage.splice(index,1);
+    localStorage.setItem('tasks',JSON.stringify(taskFromStorage)); 
 }
 function getFromLocalStorage(){
     var taskItems=JSON.parse(localStorage.getItem("tasks"));
