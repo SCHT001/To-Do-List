@@ -19,6 +19,9 @@
 }
 .sideDate{
     font-size: 2em;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
 }
 .titleSpan{
     font-size: 2em;
@@ -31,4 +34,10 @@
 }
 .sideBtn button{
     width: 7em;
+}
+.weekDay{
+    text-align: start;
+}
+.time{
+    font-size: large;
 }

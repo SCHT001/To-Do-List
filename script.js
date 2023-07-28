@@ -16,12 +16,14 @@ function clearInput(){
     title.value='';
     des.value='';
 } 
+const weekDay=[ 'Sun','Mon','Tue','Wed','Thur','Fri','Sat'];
 var taskArr=[];
 function addTask(){
     var currdate=new Date;
     var mins=currdate.getMinutes();
     var hrs=currdate.getHours();
-    var sec=currdate.getSeconds();
+    var week=currdate.getDay();
+    console.log(weekDay[week]);
     var title=document.getElementById('titleText').value;
     var des=document.getElementById('desText').value;
     if(title==''||des==''){
@@ -31,7 +33,10 @@ function addTask(){
     {
     var task=document.createElement('div');
     task.innerHTML= `<div class="listItem">
-    <div class='sideDate'>${hrs} : ${mins}</div>
+    <div class='sideDate'> 
+    <span class='weekDay'>${weekDay[week]}</span>
+    <span class='time'>${hrs}:${mins}</span> 
+    </div>
     <div class='mainSide'>
     <span class='titleSpan'>${title}</span>
     <span class='desSpan'>${des}</span>
