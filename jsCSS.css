@@ -24,3 +24,11 @@
     font-size: 2em;
 
 }
+.sideBtn{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.sideBtn button{
+    width: 7em;
+}
