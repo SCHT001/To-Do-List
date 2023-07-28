@@ -15,7 +15,8 @@ function clearInput(){
     var des=document.getElementById('desText');
     title.value='';
     des.value='';
-}
+} 
+var taskArr=[];
 function addTask(){
     var currdate=new Date;
     var mins=currdate.getMinutes();
@@ -41,16 +42,16 @@ function addTask(){
     </div>
     </div>`
     
-    var obj=[
-        {
+    var obj=
+        [{
             hours:hrs,
             minutes:mins,
             title:title,
             description:des
 
-        }
-    ];
-    localStorage.setItem(Date.now(),JSON.stringify(obj));
+        }]
+    taskArr.push(obj);
+    localStorage.setItem("tasks",JSON.stringify(taskArr));
     taskList.appendChild(task);
     inputContainer.style.top='-100vh';
     clearInput();
@@ -63,5 +64,37 @@ function addTask(){
 
 function deleteItem(e){
     const listItem=e.target.closest('.listItem');
+    const taskList = listItem.parentNode;
+    const index = Array.from(taskList.children).indexOf(listItem);
+    const storedTasks = JSON.parse(localStorage.getItem('tasks'));
+    if (Array.isArray(storedTasks)) {
+    storedTasks.splice(index, 1);
+    localStorage.setItem('tasks', JSON.stringify(storedTasks));
+  }
     listItem.remove();
+    
 }
+function getFromLocalStorage(){
+    var taskItems=JSON.parse(localStorage.getItem("tasks"));
+    taskItems.forEach((t)=>{
+    var task=document.createElement('div');
+    task.innerHTML= `<div class="listItem">
+    <div class='sideDate'>${t[0].hours} : ${t[0].minutes}</div>
+    <div class='mainSide'>
+    <span class='titleSpan'>${t[0].title}</span>
+    <span class='desSpan'>${t[0].description}</span>
+    </div>
+    <div class="sideBtn">
+    <button class='btn btn-primary'>Completed</button>
+    <button class='btn btn-danger deleteBtn' >Delete</button>
+    </div>
+    </div>`
+    taskList.appendChild(task);
+    })
+    var deleteBtn=document.querySelectorAll('.deleteBtn');
+    var deleteBtn=document.querySelectorAll('.deleteBtn');
+    deleteBtn.forEach((btn)=>{
+    btn.addEventListener('click',deleteItem);
+    })
+}
+getFromLocalStorage();
