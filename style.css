@@ -69,3 +69,27 @@
     gap: 1em;
     
 }
+@media (max-width:600px){
+    .topBar{
+        margin: 20px 5px 0px 5px ;
+        width: 100%;
+        justify-content: space-around;
+    }
+    .submain{
+        width: 100%;
+        margin: 0px;
+    }
+    .listItem{
+        margin:20px 10px 0px 10px;
+        width: 95%!important;
+    
+    }
+    .taskInput{
+        margin: 15% 15% 0 15%;
+        width: 70%;
+    }
+    .taskInputContainer{
+        justify-content: center;
+        align-items: center;
+    }
+}
