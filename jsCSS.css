@@ -1,0 +1,26 @@
+.listItem{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-right: 20px;
+    background-color: white;
+    border-radius: 25px;
+    width: 100%;
+    padding: 10px;
+    box-shadow: 1px 3px 5px wheat;
+    margin-bottom: 10px;
+}
+.mainSide{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    justify-content: center;
+    align-items: center;
+}
+.sideDate{
+    font-size: 2em;
+}
+.titleSpan{
+    font-size: 2em;
+
+}

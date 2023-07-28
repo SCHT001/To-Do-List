@@ -1,102 +1,71 @@
 *{
     margin: 0px;
     padding: 0px;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    color: black;
 }
 .main{
-    background-image: url(image/bg.png);
-    background-position:center;
-    background-size: cover;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 20px;
     height: 100vh;
+    background-color: #F9F6EE;
+    width: 100%;
 }
-.submain
-{
-    height: auto;
-    width: 20em;
-    border: 0.2px solid black;
-    text-align: center;
-    
-    border-radius: 10px;
-    padding: 20px 20px 0px 20px ;
-    margin-top: 10%;
-    background: linear-gradient(45deg,rgb(101, 141, 194),rgb(197, 117, 197));
-    
+.header-grey{
+    color: grey;
+    font-family: sans-serif;
 }
-#input{
-   background-color:transparent;
-    color: black;
-    box-shadow: none;
-    border-radius: 5px;
-    border: none;
-    height: 30px;
-    width: 80%;
-    font-size: large;
-    margin-left: 10px;
-    
+.submain{
+    margin-left: 20%;
+    margin-right: 20%;
+    position: absolute;
+    width: 60%;
 }
-#input:focus{
-    outline: none;
-}
-.container{
+.topBar{
     display: flex;
+    justify-content: space-between;
+    margin: 20px;
 }
-#btn
-{
-    font-size: 12px;
-    width: 40px;
-    height: 30px;
-    border-radius: 40%;
-    border: none;
-    background-color:transparent;
-    font-size: 1.5em;
-    color: black;
-    cursor: pointer;
-} 
-hr{
-    margin:10px;
-    
+.btn.btn-outline-primary,.btn.btn-outline-info{
+    font-weight: 500;
 }
-.container2
-{
+
+.taskInputContainer{
+    position: absolute;
+    border: 1px solid black;
+    z-index: 1;
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    top: -100vh;
+    transition: 0.3s ease-in;
+    background-color: rgba(114, 87, 87, 0.836);
+}
+.taskInput{
+    padding: 20px;
+    width: 20em;
+    margin: 10% 40%;
+    border: 1px solid black;
+    background-color: white;
+}
+.inputBar{
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    margin-top: 20px;
 }
-.instructions
-{
-    font-size: small;
-    text-align: left;
-    width: fit-content;
+.header-bold{
+    font-weight: 500;
+    font-size: 1.5em;
 }
-hr{
-    border: 0px;
-    height: 2px;
-    background-color: black;
-}
-#clearBtn{
+.inputBar input{
     background-color: transparent;
-    border: none;
-    cursor: pointer;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-size: 1.4em;
 }
-
-
-@media (max-width:600px) {
-    .submain{
-        
-        width: 100%;
-        height: 100%;
-        margin: 0px 0px 0px 0px;
-       
-        border: none;
-    }
-    .main{
-        padding: 20px;
-        
-    }
+.buttons{
+    display: flex;
+    align-items: flex-end;
+    width: 100%;
+    justify-content: flex-end;
+    margin-top: 20px;
+    gap: 1em;
     
 }
