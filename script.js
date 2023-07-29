@@ -42,7 +42,7 @@ function addTask(){
     <span class='desSpan'>${des}</span>
     </div>
     <div class="sideBtn">
-    <button class='btn btn-primary'>Completed</button>
+    <button class='btn btn-primary completedBtn'>Completed</button>
     <button class='btn btn-danger deleteBtn' >Delete</button>
     </div>
     </div>`
@@ -53,7 +53,8 @@ function addTask(){
             minutes:mins,
             title:title,
             description:des,
-            week:week
+            week:week,
+            status:0
         }]
     taskArr.push(obj);
     localStorage.setItem("tasks",JSON.stringify(taskArr));
@@ -64,6 +65,11 @@ function addTask(){
     var deleteBtn=document.querySelectorAll('.deleteBtn');
     deleteBtn.forEach((btn)=>{
     btn.addEventListener('click',deleteItem);
+
+    var completedBtn=document.querySelectorAll('.completedBtn');
+    completedBtn.forEach((btn)=>{
+    btn.addEventListener('click',completedTask);
+    });
 })
 }
 
@@ -80,6 +86,21 @@ function deleteItem(e){
     taskFromStorage.splice(index,1);
     localStorage.setItem('tasks',JSON.stringify(taskFromStorage)); 
 }
+function completedTask(e){
+    const listItem=e.target.closest('.listItem');
+    listItem.style.backgroundColor='rgba(56, 245, 70, 0.3)';
+
+
+    const title=listItem.querySelector('.titleSpan').innerText;
+    const des=listItem.querySelector('.desSpan').innerText;
+    var taskFromStorage=JSON.parse(localStorage.getItem('tasks'));
+    var index= taskFromStorage.findIndex((item)=>{
+        return item[0].title===title && item[0].description===des;    
+    })
+    
+    taskFromStorage[index][0].status=1;
+    localStorage.setItem('tasks',JSON.stringify(taskFromStorage));
+}
 function getFromLocalStorage(){
     var taskItems=JSON.parse(localStorage.getItem("tasks"));
     taskItems.forEach((t)=>{
@@ -93,16 +114,20 @@ function getFromLocalStorage(){
     <span class='desSpan'>${t[0].description}</span>
     </div>
     <div class="sideBtn">
-    <button class='btn btn-primary'>Completed</button>
+    <button class='btn btn-primary completedBtn'>Completed</button>
     <button class='btn btn-danger deleteBtn' >Delete</button>
     </div>
     </div>`
     taskList.appendChild(task);
     })
     var deleteBtn=document.querySelectorAll('.deleteBtn');
-    var deleteBtn=document.querySelectorAll('.deleteBtn');
     deleteBtn.forEach((btn)=>{
     btn.addEventListener('click',deleteItem);
-    })
+    });
+    var completedBtn=document.querySelectorAll('.completedBtn');
+    completedBtn.forEach((btn)=>{
+    btn.addEventListener('click',completedTask);
+    });
+
 }
 getFromLocalStorage();
