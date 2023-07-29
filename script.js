@@ -52,8 +52,8 @@ function addTask(){
             hours:hrs,
             minutes:mins,
             title:title,
-            description:des
-
+            description:des,
+            week:week
         }]
     taskArr.push(obj);
     localStorage.setItem("tasks",JSON.stringify(taskArr));
@@ -85,7 +85,9 @@ function getFromLocalStorage(){
     taskItems.forEach((t)=>{
     var task=document.createElement('div');
     task.innerHTML= `<div class="listItem">
-    <div class='sideDate'>${t[0].hours} : ${t[0].minutes}</div>
+    <div class='sideDate'>
+    <span class='weekDay'>${weekDay[t[0].week]}</span>
+    <span class='time'>${t[0].hours}:${t[0].minutes}</span> </div>
     <div class='mainSide'>
     <span class='titleSpan'>${t[0].title}</span>
     <span class='desSpan'>${t[0].description}</span>
