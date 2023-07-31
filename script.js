@@ -131,3 +131,10 @@ function getFromLocalStorage(){
 
 }
 getFromLocalStorage();
+
+function completedCheck(){
+    var taskItems=JSON.parse(localStorage.getItem("tasks"));
+    taskItems.find((e)=>{
+        e[0].status===0;
+    })
+}
