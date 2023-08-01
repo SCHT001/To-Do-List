@@ -75,6 +75,7 @@ function getFromLocalStorage(){
     state.tasks=tasks ? JSON.parse(tasks) : [];
 
 }
+<<<<<<< HEAD
 
 function displayTask(){
     const container=document.getElementById('taskLists');
@@ -151,3 +152,13 @@ displayTask();
 
 
 // getFromLocalStorage();
+=======
+getFromLocalStorage();
+
+function completedCheck(){
+    var taskItems=JSON.parse(localStorage.getItem("tasks"));
+    taskItems.find((e)=>{
+        e[0].status===0;
+    })
+}
+>>>>>>> origin/master
