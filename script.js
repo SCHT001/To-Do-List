@@ -75,8 +75,6 @@ function getFromLocalStorage(){
     state.tasks=tasks ? JSON.parse(tasks) : [];
 
 }
-<<<<<<< HEAD
-
 function displayTask(){
     const container=document.getElementById('taskLists');
     container.innerHTML='';
@@ -152,7 +150,6 @@ displayTask();
 
 
 // getFromLocalStorage();
-=======
 getFromLocalStorage();
 
 function completedCheck(){
