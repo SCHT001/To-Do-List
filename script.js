@@ -175,13 +175,13 @@ function editItem(id){
     editDes.value=state.tasks[index].description;
 
     editCalcelBtn.addEventListener('click',()=>{
-        editModel.style.top='-70vh';
+        editModel.style.top='-100vh';
     })
     editEditBtn.addEventListener('click',()=>{
         state.tasks[index].title=editTitle.value;
         state.tasks[index].description=editDes.value;
         localStorage.setItem('task',JSON.stringify(state.tasks));
-        editModel.style.top='-70vh';
+        editModel.style.top='-100vh';
         getFromLocalStorage();
         displayTask();
     })
