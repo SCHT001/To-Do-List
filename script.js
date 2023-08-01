@@ -158,4 +158,3 @@ function completedCheck(){
         e[0].status===0;
     })
 }
->>>>>>> origin/master
