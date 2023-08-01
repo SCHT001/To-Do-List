@@ -1,3 +1,7 @@
+const state={
+    tasks: [],
+    weekDay: [ 'Sun','Mon','Tue','Wed','Thur','Fri','Sat']
+}
 var addBtn=document.getElementById('addBtn');
 var taskList=document.getElementById('taskLists');
 var inputContainer=document.getElementById("inputContainer");
@@ -16,118 +20,134 @@ function clearInput(){
     title.value='';
     des.value='';
 } 
-const weekDay=[ 'Sun','Mon','Tue','Wed','Thur','Fri','Sat'];
-var taskArr=[];
+
 function addTask(){
     var currdate=new Date;
     var mins=currdate.getMinutes();
     var hrs=currdate.getHours();
     var week=currdate.getDay();
-    console.log(weekDay[week]);
+    console.log(state.weekDay[week]);
     var title=document.getElementById('titleText').value;
     var des=document.getElementById('desText').value;
     if(title==''||des==''){
         alert("Please fill in the boxes");
     }
     else
-    {
-    var task=document.createElement('div');
-    task.innerHTML= `<div class="listItem">
-    <div class='sideDate'> 
-    <span class='weekDay'>${weekDay[week]}</span>
-    <span class='time'>${hrs}:${mins}</span> 
-    </div>
-    <div class='mainSide'>
-    <span class='titleSpan'>${title}</span>
-    <span class='desSpan'>${des}</span>
-    </div>
-    <div class="sideBtn">
-    <button class='btn btn-primary completedBtn'>Completed</button>
-    <button class='btn btn-danger deleteBtn' >Delete</button>
-    </div>
-    </div>`
-    
+    { 
     var obj=
-        [{
+        {
+            id: Date.now(),
             hours:hrs,
             minutes:mins,
             title:title,
             description:des,
             week:week,
             status:0
-        }]
-    taskArr.push(obj);
-    localStorage.setItem("tasks",JSON.stringify(taskArr));
-    taskList.appendChild(task);
-    inputContainer.style.top='-100vh';
-    clearInput();
-    }
-    var deleteBtn=document.querySelectorAll('.deleteBtn');
-    deleteBtn.forEach((btn)=>{
-    btn.addEventListener('click',deleteItem);
-
-    var completedBtn=document.querySelectorAll('.completedBtn');
-    completedBtn.forEach((btn)=>{
-    btn.addEventListener('click',completedTask);
-    });
-})
-}
-
-function deleteItem(e){
-    const listItem=e.target.closest('.listItem');
-    listItem.remove();
-
-    const title=listItem.querySelector('.titleSpan').innerText;
-    const des=listItem.querySelector('.desSpan').innerText;
-    var taskFromStorage=JSON.parse(localStorage.getItem('tasks'));
-    var index= taskFromStorage.findIndex((item)=>{
-        return item[0].title===title && item[0].description===des;    
-    })
-    taskFromStorage.splice(index,1);
-    localStorage.setItem('tasks',JSON.stringify(taskFromStorage)); 
-}
-function completedTask(e){
-    const listItem=e.target.closest('.listItem');
-    listItem.style.backgroundColor='rgba(56, 245, 70, 0.3)';
-
-
-    const title=listItem.querySelector('.titleSpan').innerText;
-    const des=listItem.querySelector('.desSpan').innerText;
-    var taskFromStorage=JSON.parse(localStorage.getItem('tasks'));
-    var index= taskFromStorage.findIndex((item)=>{
-        return item[0].title===title && item[0].description===des;    
-    })
+        }
     
-    taskFromStorage[index][0].status=1;
-    localStorage.setItem('tasks',JSON.stringify(taskFromStorage));
+        state.tasks.push(obj);
+        inputContainer.style.top='-100vh';
+        localStorage.setItem('task',JSON.stringify(state.tasks));
+        getFromLocalStorage();
+        displayTask();
+}
+}
+
+function deleteItem(id){
+    const index=state.tasks.findIndex((item)=>{
+        return item.id===id;
+    });
+    state.tasks.splice(index,1);
+    localStorage.setItem('task',JSON.stringify(state.tasks));
+    getFromLocalStorage();
+    displayTask();
+}
+function completeTask(id){
+    const index=state.tasks.findIndex((item)=>{
+        return item.id===id;
+    });
+    state.tasks[index].status=1;
+    localStorage.setItem('task',JSON.stringify(state.tasks));
+    getFromLocalStorage();
 }
 function getFromLocalStorage(){
-    var taskItems=JSON.parse(localStorage.getItem("tasks"));
-    taskItems.forEach((t)=>{
-    var task=document.createElement('div');
-    task.innerHTML= `<div class="listItem">
-    <div class='sideDate'>
-    <span class='weekDay'>${weekDay[t[0].week]}</span>
-    <span class='time'>${t[0].hours}:${t[0].minutes}</span> </div>
-    <div class='mainSide'>
-    <span class='titleSpan'>${t[0].title}</span>
-    <span class='desSpan'>${t[0].description}</span>
-    </div>
-    <div class="sideBtn">
-    <button class='btn btn-primary completedBtn'>Completed</button>
-    <button class='btn btn-danger deleteBtn' >Delete</button>
-    </div>
-    </div>`
-    taskList.appendChild(task);
-    })
-    var deleteBtn=document.querySelectorAll('.deleteBtn');
-    deleteBtn.forEach((btn)=>{
-    btn.addEventListener('click',deleteItem);
-    });
-    var completedBtn=document.querySelectorAll('.completedBtn');
-    completedBtn.forEach((btn)=>{
-    btn.addEventListener('click',completedTask);
-    });
+    const tasks=localStorage.getItem('task');
+    state.tasks=tasks ? JSON.parse(tasks) : [];
 
 }
+
+function displayTask(){
+    const container=document.getElementById('taskLists');
+    container.innerHTML='';
+    if(state.tasks.length>0){
+        state.tasks.forEach((task)=>{
+            const div=document.createElement('div');
+            
+            div.innerHTML=(`<div class="listItem">
+            <div class='sideDate'>
+            <span class='weekDay'>${state.weekDay[task.week]}</span>
+            <span class='time'>${task.hours}:${task.minutes}</span> </div>
+            <div class='mainSide'>
+            <span class='titleSpan'>${task.title}</span>
+            <span class='desSpan'>${task.description}</span>
+            </div>
+            <div class="sideBtn">
+            <button class='btn btn-primary completedBtn' onclick="completeTask(${task.id})">Completed</button>
+            <button class='btn btn-danger deleteBtn' onclick="deleteItem(${task.id})" >Delete</button>
+            </div>
+            </div>`)
+            container.appendChild(div);
+        })
+    }
+    else{
+        container.innerHTML="No tasks..";
+    }
+}
+
+//completed List display
+document.getElementById('completedList').addEventListener('click',displayCompleted);
+function displayCompleted(){
+    taskList.innerHTML=``;
+    getFromLocalStorage();
+    const task=state.tasks;
+    const completedTasks=task.filter((item)=>{
+        return item.status==1;
+    })
+    if(completeTask){
+        state.tasks=completedTasks;
+    }
+    else{
+        state.tasks=[];
+    }
+    console.log(state.tasks);
+    displayTask();
+}
+
+//All list display
+document.getElementById('allList').addEventListener('click',()=>{
+    getFromLocalStorage();
+    displayTask();
+})
+
+//Pending Display
+document.getElementById('pendingList').addEventListener('click',()=>{
+    taskList.innerHTML=``;
+    getFromLocalStorage();
+    const task=state.tasks;
+    const pendingTasks=task.filter((item)=>{
+        return item.status==0;
+    })
+    if(completeTask){
+        state.tasks=pendingTasks;
+    }
+    else{
+        state.tasks=[];
+    }
+    console.log(state.tasks);
+    displayTask();
+})
 getFromLocalStorage();
+displayTask();
+
+
+// getFromLocalStorage();
