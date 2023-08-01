@@ -156,17 +156,8 @@ document.getElementById('pendingList').addEventListener('click',()=>{
     else{
         state.tasks=[];
     }
-    console.log(state.tasks);
     displayTask();
 })
 getFromLocalStorage();
 displayTask();
-
 getFromLocalStorage();
-
-function completedCheck(){
-    var taskItems=JSON.parse(localStorage.getItem("tasks"));
-    taskItems.find((e)=>{
-        e[0].status===0;
-    })
-}
