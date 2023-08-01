@@ -112,7 +112,8 @@ function displayTask(){
         })
     }
     else{
-        container.innerHTML="No tasks..";
+        container.innerHTML=``;
+         container.innerHTML=`<div style="font-size: 2em; text-align: center; margin-top:2em " > No tasks...</div>`
     }
 }
 
