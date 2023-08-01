@@ -99,6 +99,7 @@ function displayTask(){
             <div class="sideBtn">
             <button class='btn btn-primary completedBtn' onclick="completeTask(${task.id}, this)">Completed</button>
             <button class='btn btn-danger deleteBtn' onclick="deleteItem(${task.id})" >Delete</button>
+            <button class='btn btn-info editBtn' onclick="editItem(${task.id})">Edit</button>
             </div>
             </div>`)
             if(task.status==1){
@@ -158,6 +159,33 @@ document.getElementById('pendingList').addEventListener('click',()=>{
     }
     displayTask();
 })
+
+//Edit button
+const editCalcelBtn=document.getElementById('editCancelBtn');
+const editEditBtn=document.getElementById('editEditBtn');
+const editModel=document.getElementById('editModel');
+const editTitle=document.getElementById('editTitleText');
+const editDes=document.getElementById('editDesText');
+function editItem(id){
+    editModel.style.top='0vh';
+    const index=state.tasks.findIndex((item)=>{
+        return item.id===id;
+    });
+    editTitle.value=state.tasks[index].title;
+    editDes.value=state.tasks[index].description;
+
+    editCalcelBtn.addEventListener('click',()=>{
+        editModel.style.top='-70vh';
+    })
+    editEditBtn.addEventListener('click',()=>{
+        state.tasks[index].title=editTitle.value;
+        state.tasks[index].description=editDes.value;
+        localStorage.setItem('task',JSON.stringify(state.tasks));
+        editModel.style.top='-70vh';
+        getFromLocalStorage();
+        displayTask();
+    })
+}
 getFromLocalStorage();
 displayTask();
 getFromLocalStorage();

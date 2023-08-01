@@ -70,6 +70,11 @@
     gap: 1em;
     
 }
+#editModel{
+    position: relative;
+    top: -80vh;
+    transition: 0.3s ease-in-out;
+}
 @media (max-width:600px){
     .topBar{
         margin: 20px 5px 0px 5px ;
