@@ -26,7 +26,6 @@ function addTask(){
     var mins=currdate.getMinutes();
     var hrs=currdate.getHours();
     var week=currdate.getDay();
-    console.log(state.weekDay[week]);
     var title=document.getElementById('titleText').value;
     var des=document.getElementById('desText').value;
     if(title==''||des==''){
@@ -50,9 +49,13 @@ function addTask(){
         localStorage.setItem('task',JSON.stringify(state.tasks));
         getFromLocalStorage();
         displayTask();
+        clearInput();
 }
 }
-
+function clearInput(){
+    document.getElementById('titleText').value='';
+    document.getElementById('desText').value='';
+}
 function deleteItem(id){
     const index=state.tasks.findIndex((item)=>{
         return item.id===id;
@@ -62,13 +65,16 @@ function deleteItem(id){
     getFromLocalStorage();
     displayTask();
 }
-function completeTask(id){
+function completeTask(id, el){
+    
     const index=state.tasks.findIndex((item)=>{
         return item.id===id;
     });
     state.tasks[index].status=1;
     localStorage.setItem('task',JSON.stringify(state.tasks));
     getFromLocalStorage();
+    displayTask();
+
 }
 function getFromLocalStorage(){
     const tasks=localStorage.getItem('task');
@@ -81,8 +87,8 @@ function displayTask(){
     if(state.tasks.length>0){
         state.tasks.forEach((task)=>{
             const div=document.createElement('div');
-            
-            div.innerHTML=(`<div class="listItem">
+            div.classList.add('divS');
+            div.innerHTML=(`<div class="listItem" style="background-color: transparent;" >
             <div class='sideDate'>
             <span class='weekDay'>${state.weekDay[task.week]}</span>
             <span class='time'>${task.hours}:${task.minutes}</span> </div>
@@ -91,11 +97,18 @@ function displayTask(){
             <span class='desSpan'>${task.description}</span>
             </div>
             <div class="sideBtn">
-            <button class='btn btn-primary completedBtn' onclick="completeTask(${task.id})">Completed</button>
+            <button class='btn btn-primary completedBtn' onclick="completeTask(${task.id}, this)">Completed</button>
             <button class='btn btn-danger deleteBtn' onclick="deleteItem(${task.id})" >Delete</button>
             </div>
             </div>`)
+            if(task.status==1){
+                div.style.backgroundColor="rgba(69,255,0,0.2)";
+            }
+            else{
+                div.style.backgroundColor="rgba(255,81,0,0.2)"
+            }
             container.appendChild(div);
+            
         })
     }
     else{
@@ -106,6 +119,7 @@ function displayTask(){
 //completed List display
 document.getElementById('completedList').addEventListener('click',displayCompleted);
 function displayCompleted(){
+    
     taskList.innerHTML=``;
     getFromLocalStorage();
     const task=state.tasks;
@@ -118,7 +132,6 @@ function displayCompleted(){
     else{
         state.tasks=[];
     }
-    console.log(state.tasks);
     displayTask();
 }
 
@@ -148,8 +161,6 @@ document.getElementById('pendingList').addEventListener('click',()=>{
 getFromLocalStorage();
 displayTask();
 
-
-// getFromLocalStorage();
 getFromLocalStorage();
 
 function completedCheck(){
