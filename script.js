@@ -215,8 +215,12 @@ const taskListBtns = document.querySelectorAll('.taskListBtn');
 taskListBtns.forEach((btn) => {
     btn.addEventListener('click', (e) => {
         taskListBtns.forEach(btn => {
-            btn.classList.contains('btn-primary') && btn.classList.replace('btn-primary', 'btn-outline-primary');
+            if (btn.classList.contains('btn-primary')) {
+                 btn.classList.remove('btn-primary');
+                 btn.classList.add('btn-outline-primary');
+            }
         })
-        e.target.classList.replace('btn-primary-outline', 'btn-primary');
+        e.target.classList.remove('btn-outline-primary');
+        e.target.classList.add('btn-primary');
     })
 })
