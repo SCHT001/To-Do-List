@@ -210,6 +210,7 @@ function notify(text) {
 getFromLocalStorage();
 displayTask();
 getFromLocalStorage();
+
 const taskListBtns = document.querySelectorAll('.taskListBtn');
 taskListBtns.forEach((btn) => {
     btn.addEventListener('click', (e) => {
