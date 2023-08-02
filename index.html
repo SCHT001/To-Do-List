@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
+    <head>
+        <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="jsCSS.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <title>ToDoList</title>
 </head>
 
@@ -17,14 +17,19 @@
         <div class="submain">
             <div class="topBar">
                 <div class="listbuttons">
-                    <button class="btn btn-primary" id="allList">ALL</button>
-                    <button class="btn btn-outline-primary" id="completedList">Completed</button>
-                    <button class="btn btn-outline-primary"id="pendingList">Pending</button>
+                    <button class="btn btn-primary taskListBtn" id="allList">ALL</button>
+                    <button class="btn btn-outline-primary taskListBtn" id="completedList">Completed</button>
+                    <button class="btn btn-outline-primary taskListBtn"id="pendingList">Pending</button>
                 </div>
                 <button class="btn btn-info" id="addBtn"> Create</button>
             </div>
             <div id="taskLists">
             </div>
+        </div>
+        <div id="notifyModel">
+            <span id="notifyText">
+                Completed
+            </span>
         </div>
         <div class="taskInputContainer" id="inputContainer" >
             <div class="taskInput">
@@ -61,6 +66,7 @@
     </div>
 </body>
 <script src="script.js"></script>
+<!-- <script src="test.js"></script> -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
     crossorigin="anonymous"></script>

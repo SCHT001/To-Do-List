@@ -75,6 +75,22 @@
     top: -100vh;
     transition: 0.3s ease-in-out;
 }
+#notifyModel{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    top: -30vh;
+    transition: 0.3s ease-in-out;
+    z-index: 2;
+}
+#notifyText{
+    background-color: rgb(90, 92, 226);
+    color: white;
+    padding: 10px;
+    border-radius: 3px;
+    
+}
 @media (max-width:600px){
     .topBar{
         margin: 20px 5px 0px 5px ;
@@ -98,4 +114,5 @@
         justify-content: center;
         align-items: center;
     }
+ 
 }
