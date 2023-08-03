@@ -76,7 +76,7 @@
 }
 #notifyModel{
     display: flex;
-    align-items: center;
+    align-items: center; 
     justify-content: center;
     position: relative;
     top: -30vh;

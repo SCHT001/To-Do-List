@@ -228,6 +228,7 @@ taskListBtns.forEach((btn) => {
         e.target.classList.add('btn-primary');
     })
 })
+
 function confirmDelete(id){
     confirmDeleteModel.style.top="0vh";
     confirmDeleteBtn.addEventListener('click',()=>{
