@@ -231,9 +231,11 @@ taskListBtns.forEach((btn) => {
 
 function confirmDelete(id){
     confirmDeleteModel.style.top="0vh";
-    confirmDeleteBtn.addEventListener('click',()=>{
+    confirmDeleteBtn.addEventListener('click',clicker =()=>{
         deleteItem(id);
-    })
+        confirmDeleteBtn.removeEventListener('click',clicker);
+    }) 
+    
     cancelDeleteBtn.addEventListener('click',()=>{
         confirmDeleteModel.style.top='-90vh';
     })
