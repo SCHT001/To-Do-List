@@ -1,3 +1,6 @@
+const confirmDeleteModel=document.getElementById('deleteConfirmModel');
+const confirmDeleteBtn=document.getElementById('confirmDeleteBtn');
+const cancelDeleteBtn=document.getElementById('cancelDeleteBtn');
 const state = {
     tasks: [],
     weekDay: ['Sun', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat']
@@ -74,6 +77,7 @@ function deleteItem(id) {
     localStorage.setItem('task', JSON.stringify(state.tasks));
     getFromLocalStorage();
     displayTask();
+    confirmDeleteModel.style.top='-100vh';
     notify("Task Deleted");
 }
 function completeTask(id) {
@@ -109,7 +113,7 @@ function displayTask() {
             </div>
             <div class="sideBtn">
             <button class='btn btn-primary completedBtn' onclick="completeTask(${task.id}, this)">Completed</button>
-            <button class='btn btn-danger deleteBtn' onclick="deleteItem(${task.id})" >Delete</button>
+            <button class='btn btn-danger deleteBtn' onclick="confirmDelete(${task.id})" >Delete</button>
             <button class='btn btn-info editBtn' onclick="editItem(${task.id})">Edit</button>
             </div>
             </div>`)
@@ -224,3 +228,12 @@ taskListBtns.forEach((btn) => {
         e.target.classList.add('btn-primary');
     })
 })
+function confirmDelete(id){
+    confirmDeleteModel.style.top="0vh";
+    confirmDeleteBtn.addEventListener('click',()=>{
+        deleteItem(id);
+    })
+    cancelDeleteBtn.addEventListener('click',()=>{
+        confirmDeleteModel.style.top='-90vh';
+    })
+}
