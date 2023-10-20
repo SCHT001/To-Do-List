@@ -9,7 +9,7 @@ var addBtn = document.getElementById('addBtn');
 var taskList = document.getElementById('taskLists');
 var inputContainer = document.getElementById("inputContainer");
 addBtn.addEventListener('click', () => {
-    inputContainer.style.display = "block";
+    inputContainer.style.display = "flex";
     inputContainer.style.top = "0vh";
 });
 document.getElementById('cancelBtn').addEventListener('click', () => {
@@ -112,9 +112,9 @@ function displayTask() {
             <span class='desSpan'>${task.description}</span>
             </div>
             <div class="sideBtn">
-            <button class='btn btn-primary completedBtn' onclick="completeTask(${task.id}, this)">Completed</button>
-            <button class='btn btn-danger deleteBtn' onclick="confirmDelete(${task.id})" >Delete</button>
-            <button class='btn btn-info editBtn' onclick="editItem(${task.id})">Edit</button>
+            <button class='roundedBtn completedBtn' onclick="completeTask(${task.id}, this)">Completed</button>
+            <button class='roundedBtn deleteBtn' onclick="confirmDelete(${task.id})" >Delete</button>
+            <button class='roundedBtn editBtn' onclick="editItem(${task.id})">Edit</button>
             </div>
             </div>`)
             if (task.status == 1) {

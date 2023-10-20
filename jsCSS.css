@@ -1,14 +1,14 @@
 .listItem{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     background-color: white;
     border-radius: 25px;
     width: 100%;
     transition: 0.3s ease-in;
-    padding: 10px;
+    padding: 10px 5px;
     margin-bottom: 10px;
     animation: fadeIn 0.3s;
+    justify-content: space-around;
 }
 .divS{
     margin-right: 20px;
@@ -19,7 +19,7 @@
 .mainSide{
     display: flex;
     flex-direction: column;
-    width: 70%;
+    width: 50%;
     justify-content: center;
     align-items: center;
     overflow: hidden;
@@ -39,7 +39,7 @@
 .sideBtn{
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 10px;
 }
 .sideBtn button{
     width: 7em;
