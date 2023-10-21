@@ -73,7 +73,7 @@
 .taskInput{
     padding: 20px;
     width: 20em;
-    background-color:rgb(211, 242, 255);
+    background-color:rgb(221, 235, 232);
     box-sizing: border-box;
     box-shadow: 2px 2px 2px 1px rgb(184, 183, 183),-2px -2px 2px 1px rgb(204, 204, 204);
     height: fit-content;
@@ -97,12 +97,18 @@
     box-shadow: 1px 1px 2px 1px rgb(184, 183, 183),1px 1px 2px 1px rgb(204, 204, 204);
 
 }
-#desText{
+.inputBar input:focus{
+    outline: none;
+}
+#desText, #editDesText{
     box-shadow: 1px 1px 2px 1px rgb(184, 183, 183),1px 1px 2px 1px rgb(204, 204, 204);
     background-color: rgb(255, 241, 241);
     border: none;
     border-radius: 0px 25px 25px 25px;
 
+}
+#desText:focus,#editDesText:focus{
+    outline: none;
 }
 .titleHeaders{
     background-color: rgb(255, 241, 241);
@@ -126,15 +132,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    box-sizing: border-box;
+    width: 100%;
+    padding: 10px;
 }
+
 #notifyModel{
     display: flex;
     align-items: center; 
     justify-content: center;
     position: relative;
     top: -30vh;
-    transition: 0.3s ease-in-out;
+    transition: 0.2s ease-in-out;
     z-index: 2;
 }
 #notifyText{
@@ -142,6 +150,8 @@
     color: white;
     padding: 10px;
     border-radius: 3px;
+    border-radius: 25px;
+    box-shadow: 1px 1px 2px 1px rgb(184, 183, 183),1px 1px 2px 1px rgb(204, 204, 204);
 }
 #titleText,#desText,#editTitleText,#editTitleText{
     padding: 0px 5px;
@@ -150,7 +160,8 @@
     background-color: rgb(255, 228, 228);
 }
 input{
-    padding-left: 10px!important; 
+    padding-left: 10px 20px!important; 
+    font-size: large!important;
 }
 textarea{
     padding: 10px 10px !important;
@@ -164,6 +175,13 @@ textarea{
     top: -90vh;
     z-index: 2;
     position: relative;
+}
+.deleteConfirmModelBox{
+    box-shadow: 1px 1px 2px 1px rgb(184, 183, 183),1px 1px 2px 1px rgb(204, 204, 204);
+
+}
+#confirmDeleteBtn:hover{
+    background-color: red;
 }
 
 

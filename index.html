@@ -31,13 +31,13 @@
             </span>
         </div>
         <div id="deleteConfirmModel">
-           <div style="background-color: blue; padding: 10px; border-radius: 5px; z-index: 2; color: white; display: flex;justify-content: center;align-items: center; flex-direction: column; gap: 15px;">
-            <span id="deleteConfirmText" style="z-index: 2;">
+           <div class="deleteConfirmModelBox" style=" background-color: rgb(135, 199, 207);padding: 10px; border-radius: 25px; z-index: 2; color: white; display: flex;justify-content: center;align-items: center; flex-direction: column; gap: 15px;">
+            <span id="deleteConfirmText" style="z-index: 2; color: black;">
                 Confirm delete ?
             </span>
             <div class="deleteConfirmButtons" style="z-index: 2;">
                 <button class="roundedBtn " id="cancelDeleteBtn" >Cancel</button>
-                <button class="roundedBtn" id="confirmDeleteBtn" >Delete</button>
+                <button class="roundedBtn" id="confirmDeleteBtn" style="background-color: rgb(255, 113, 113);">Delete</button>
             </div>
            </div>
         </div>
@@ -61,16 +61,16 @@
         <div id="editModel">
             <div class="taskInput">
                 <span class="header-bold"> Edit note </span>
-                <div class="InputBar">
-                    <h6>Title:</h6>
-                    <input type="text" id="editTitleText" style="width: 100%;  padding: 5px;" required>
+                <div class="inputBar">
+                    <span class="titleHeaders">Title:</span>
+                    <input type="text" id="editTitleText" required>
                     <br><br>
-                    <h6>Description:</h6>
-                    <textarea style="resize: none; width: 100%; border-radius: 5px; padding: 5px;" cols="30" rows="5" id="editDesText"  required></textarea>
+                    <span class="titleHeaders">Description:</span>
+                    <textarea style="resize: none;" cols="30" rows="5" id="editDesText" required></textarea>
                 </div>
                 <div class="buttons" >
-                    <button class="roundedBtn"    id="editCancelBtn">cancel</button>
-                    <button class="roundedBtn" id="editEditBtn" type="submit">Edit</button>
+                    <button class="roundedBtn btnDanger"    id="editCancelBtn">Cancel</button>
+                    <button class="roundedBtn" type="submit" id="editEditBtn" type="submit">Edit</button>
                 </div>
             </div>
         </div>

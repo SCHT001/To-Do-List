@@ -207,9 +207,10 @@ const notifyText = document.getElementById('notifyText');
 function notify(text) {
     notifyText.innerHTML = text;
     notifyModel.style.top = "0vh";
+    
     setTimeout(() => {
         notifyModel.style.top = "-30vh";
-    }, 1000)
+    }, 2000)
 }
 getFromLocalStorage();
 displayTask();
