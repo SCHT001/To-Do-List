@@ -218,17 +218,14 @@ getFromLocalStorage();
 
 const taskListBtns = document.querySelectorAll('.taskListBtn');
 taskListBtns.forEach((btn) => {
-    btn.addEventListener('click', (e) => {
-        taskListBtns.forEach(btn => {
-            if (btn.classList.contains('btn-primary')) {
-                 btn.classList.remove('btn-primary');
-                 btn.classList.add('btn-outline-primary');
-            }
-        })
-        e.target.classList.remove('btn-outline-primary');
-        e.target.classList.add('btn-primary');
-    })
-})
+	btn.addEventListener("click", (e) => {
+		taskListBtns.forEach((btn) => {
+			btn.style.backgroundColor='rgb(211, 247, 157)';
+		});
+		e.target.style.backgroundColor='greenyellow';
+		
+	});
+});
 
 function confirmDelete(id){
     confirmDeleteModel.style.top="0vh";
